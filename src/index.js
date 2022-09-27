@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import ReactDOM from "react-dom/client";
 import "./index.css";
-import { Todo } from "./components/todolist/todo";
+import List from "./components/todolist/todo";
 
 class Counter extends Component {
   constructor(props) {
@@ -71,9 +71,9 @@ class Somme extends Component {
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <React.StrictMode>
-    {/* <Counter> Hello les super Stars </Counter> */}.
-    <div class="container">
-      <Todo />
+    {/* <Counter> Hello les super Stars </Counter> */}
+    <div className="container">
+      <List />
     </div>
   </React.StrictMode>
 );
