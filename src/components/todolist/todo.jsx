@@ -1,6 +1,10 @@
 import { Component, Fragment } from "react";
 import "./todo.css";
-
+/**
+ * Component to manage todo list
+ * @constructor
+ * @param {Object} propos - properties of the component
+ */
 class List extends Component {
   constructor(props) {
     super(props);
@@ -17,10 +21,13 @@ class List extends Component {
     // au cas on utilise une fonction normal , on peu s'en passer de ça à travers la fonction fléchée
     this.handleChange = this.handleChange.bind(this);
   }
-  /* 
-Methodes de cycle vie
+ 
 
-*/
+  /**
+   * Inherit method from the Component class that is executed when the component List is created and mounted in the DOM
+   * 
+   * Here You can initialize any operation to update the state
+   */
   componentDidMount() {
     // charger les éléments déjà stockés
     let data =
@@ -30,21 +37,39 @@ Methodes de cycle vie
     this.setState({ list: data });
   }
 
+  /**
+   * Inherit method from the Component class that is executed when the 
+   * the  Oject state got update 
+   * 
+   */
   componentDidUpdate() {
     // Stock le tableau dans le local storage
-
     localStorage.setItem("Todos", JSON.stringify(this.state.list));
   }
 
+   /**
+   * Inherit method from the Component class that is executed when the 
+   * the List Component is removed
+   * 
+   */
   componentWillUnmount() {}
 
-  // fin MCV
 
+  /**
+   * Handle changes generate by input
+   * Update the state of the task
+   * @param {Event} e - the change event set on the input
+   */
   handleChange(e) {
     this.setState({ task: { content: e.target.value } });
     // console.log(this.state.task);
   }
 
+/**
+ * Handle the Submit event on the form
+ * Add the task to the list
+ * @param {Event} e - submit event 
+ */
   handleSubmit = (e) => {
     e.preventDefault();
 
@@ -72,6 +97,13 @@ Methodes de cycle vie
     }
   };
 
+
+  
+/**
+ * Handle the delete of item
+ * Remove the item from the list 
+ * @param {Number} index - task index in the list of tasks
+ */
   handleDelete = (index) => {
     let { list: taskList } = this.state;
     taskList.splice(index, 1);
@@ -79,7 +111,10 @@ Methodes de cycle vie
     console.log(index, taskList);
   };
 
-  // methode to handle completed task
+  /**
+   * Toggle of the done value of a task
+   * @param {String} id - the id of a task
+   */
   handleDone = (id) => {
     let { list: taskList } = this.state;
     taskList = taskList.map((item) => {
@@ -90,6 +125,9 @@ Methodes de cycle vie
     });
     this.setState({ list: taskList });
   };
+
+
+
   render() {
     // destructuration du state
 
@@ -98,7 +136,7 @@ Methodes de cycle vie
     if (alert === true) {
       setTimeout(() => {
         this.setState({ alert: false });
-      }, 10000);
+      }, 2000);
     }
     return (
       <>
@@ -153,15 +191,7 @@ Methodes de cycle vie
                       </div>
                     </div>
 
-                    <button
-                      className="btn btn-sm btn-success mx-1"
-                      onClick={() => {
-                        this.handleUpdate(item);
-                      }}
-                      title="Update"
-                    >
-                      <i className="bi bi-pencil"></i>
-                    </button>
+                   
 
                     <button
                       className="btn btn-sm btn-danger mx-1"
