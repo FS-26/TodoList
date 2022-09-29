@@ -136,7 +136,7 @@
 
 @keyframes receive {
   from {
-    bottom: 100%;
+    bottom: 50%;
     opacity: 0;
   }
   to {
