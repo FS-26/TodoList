@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import ReactDOM from "react-dom/client";
+import { Bot } from "./components/chatbot/bot";
 import "./index.css";
-import List from "./components/todolist/todo";
 
 class Counter extends Component {
   constructor(props) {
@@ -73,7 +73,8 @@ root.render(
   <React.StrictMode>
     {/* <Counter> Hello les super Stars </Counter> */}
     <div className="container">
-      <List />
+      {/* <List /> */}
+      <Bot />
     </div>
   </React.StrictMode>
 );
